@@ -1,37 +1,68 @@
-🛳️ Titanic - Dự đoán hành khách sống sót bằng Machine Learning
-📌 Mô tả dự án
-Dự án này áp dụng các kỹ thuật tiền xử lý dữ liệu, trích xuất đặc trưng và mô hình hóa để dự đoán khả năng sống sót của hành khách trên con tàu Titanic, dựa trên tập dữ liệu từ cuộc thi nổi tiếng Titanic - Machine Learning from Disaster (Kaggle).
-project_titanic_py/
-│
-├── train.csv                  # Dữ liệu huấn luyện
-├── test.csv                   # Dữ liệu kiểm tra
-├── gender_submission.csv      # File mẫu nộp Kaggle
-├── thuc_hanh.ipynb            # Notebook xử lý & train mô hình
-├── README.md                  # Giới thiệu dự án (file này)
-🧠 Các bước thực hiện
-Tiền xử lý dữ liệu
+# 🛳️ Titanic - Dự đoán hành khách sống sót bằng Machine Learning
 
-Xử lý giá trị thiếu (Age, Embarked)
+## 📌 Mô tả dự án
 
-Tạo cột mới: Family_size, Title
+Dự án này áp dụng các kỹ thuật tiền xử lý dữ liệu, trích xuất đặc trưng và mô hình học máy để **dự đoán khả năng sống sót của hành khách** trên con tàu Titanic, dựa trên tập dữ liệu từ cuộc thi nổi tiếng [Titanic - Machine Learning from Disaster (Kaggle)](https://www.kaggle.com/c/titanic).
 
-Encoding dữ liệu phân loại
+---
 
-Tạo pipeline tự động
+## 📁 Cấu trúc thư mục
 
-SimpleImputer, StandardScaler, OneHotEncoder
 
-ColumnTransformer cho dữ liệu số & phân loại
+---
 
-Huấn luyện mô hình
+## 🧠 Các bước thực hiện
 
-Logistic Regression (có thể mở rộng Random Forest, XGBoost, v.v.)
+### 1. Xử lý dữ liệu
 
-Train/test split để đánh giá độ chính xác
+- Xử lý giá trị thiếu: `Age`, `Embarked`
+- Tạo thêm đặc trưng mới: `Family_size`, `Title`
+- Mã hóa các cột phân loại (Encoding)
 
-Đánh giá mô hình
+### 2. Tạo pipeline tự động
 
-Accuracy, classification report
+- Dùng `SimpleImputer`, `StandardScaler` cho dữ liệu số
+- Dùng `OneHotEncoder` cho dữ liệu phân loại
+- Áp dụng `ColumnTransformer` để xử lý song song
 
-Confusion matrix trực quan
-5.Hoc may // hien tai dang dua ra mo hinh phu hop hon 
+### 3. Huấn luyện mô hình
+
+- Dùng **Logistic Regression** làm mô hình chính
+- Có thể mở rộng với: `Random Forest`, `XGBoost`, `SVM`, v.v.
+- Tách dữ liệu thành `train` và `validation` để đánh giá
+
+### 4. Đánh giá mô hình
+
+- Accuracy score
+- Classification Report
+- Confusion Matrix trực quan (dùng seaborn)
+
+---
+
+## 📊 Kết quả hiện tại
+
+| Mô hình              | Accuracy (val) | Ghi chú                  |
+|----------------------|----------------|---------------------------|
+| Logistic Regression  | xx%            | baseline                  |
+| (Random Forest?)     | xx%            | chưa triển khai           |
+
+> 📌 *Bạn có thể điền số liệu vào bảng trên sau khi chạy mô hình.*
+
+---
+
+## 🤖 Học máy phù hợp
+
+Hiện tại mô hình **Logistic Regression** đang cho kết quả khá ổn định và dễ giải thích, phù hợp cho bài toán **phân loại nhị phân** như Titanic. Trong tương lai có thể thử thêm:
+
+- Random Forest (đa chiều, ít overfit)
+- Gradient Boosting / XGBoost
+- VotingClassifier hoặc Stacking
+
+---
+
+## 🧪 Cách chạy dự án
+
+```bash
+git clone https://github.com/dungvnu123/project_titanic_py.git
+cd project_titanic_py
+jupyter notebook thuc_hanh.ipynb
